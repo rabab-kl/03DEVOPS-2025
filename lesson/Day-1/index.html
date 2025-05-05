@@ -1,0 +1,343 @@
+<!DOCTYPE html>
+<html lang="fr">
+
+<head>
+  <meta charset="UTF-8">
+  <title>DevOps - 2025</title>
+  <style>
+    body {
+      font-family: Arial, sans-serif;
+      background-color: #f4f4f4;
+      margin: 0;
+      padding: 20px;
+      max-width: 1000px;
+      margin: auto;
+    }
+
+    h1,
+    h2 {
+      color: #003366;
+    }
+
+    details {
+      margin-bottom: 10px;
+      background-color: #fff;
+      padding: 10px;
+      border-radius: 6px;
+      border: 1px solid #ccc;
+    }
+
+    summary {
+      font-weight: bold;
+      cursor: pointer;
+      font-size: 1.05em;
+    }
+
+    pre {
+      background-color: #eee;
+      padding: 10px;
+      overflow-x: auto;
+      border-radius: 5px;
+    }
+  </style>
+</head>
+
+<body>
+  <h1>DevOps 2025</h1>
+  <p>Questions / Réponses.</p>
+  <hr>
+  <details>
+    <summary>❓ Qu'est-ce que DevOps ?</summary>
+    <p>DevOps est une culture et un ensemble de pratiques qui visent à unifier le développement (Dev) et les opérations
+      (Ops) pour livrer plus vite, avec fiabilité et qualité.</p>
+  </details>
+  <details>
+    <summary>❓ Pourquoi a-t-on inventé DevOps ?</summary>
+    <p>Pour résoudre les conflits entre les développeurs et les administrateurs systèmes : retards, bugs, manque de
+      communication.</p>
+  </details>
+  <details>
+    <summary>❓ Quelles sont les valeurs du mouvement DevOps ?</summary>
+    <p>Collaboration, automatisation, feedback rapide, amélioration continue, responsabilisation.</p>
+  </details>
+  <details>
+    <summary>❓ C'est quoi le Lean Management ?</summary>
+    <p>Le Lean vient de l'industrie et cherche à éliminer les gaspillages pour accélérer la livraison de valeur.</p>
+  </details>
+  <details>
+    <summary>❓ C'est quoi le CI (Continuous Integration) ?</summary>
+    <p>CI = automatiser les tests, le lint et le build à chaque push pour repérer les erreurs rapidement.</p>
+  </details>
+  <details>
+    <summary>❓ C'est quoi le CD (Continuous Delivery / Deployment) ?</summary>
+    <p>CD = livrer automatiquement le code validé (en staging ou production).</p>
+  </details>
+  <details>
+    <summary>❓ Quels sont les outils de CI/CD les plus utilisés en 2025 ?</summary>
+    <p>GitHub Actions, GitLab CI, Jenkins, CircleCI, Netlify, Vercel.</p>
+  </details>
+  <details>
+    <summary>❓ Quelle est la différence entre GitHub Actions et GitLab CI ?</summary>
+    <p>GitHub Actions est intégré à GitHub. GitLab CI est utilisé en entreprise et souvent self-hosted.</p>
+  </details>
+  <details>
+    <summary>❓ Exemple de pipeline GitLab CI</summary>
+    <p>
+    <pre><code>stages:
+  - test
+test:
+  script:
+    - npm install
+    - npm test</code></pre>
+    </p>
+  </details>
+  <details>
+    <summary>❓ Exemple de pipeline GitHub Actions</summary>
+    <p>
+    <pre><code>name: CI
+on: [push]
+jobs:
+  build:
+    runs-on: ubuntu-latest
+    steps:
+    - uses: actions/checkout@v3
+    - run: npm install
+    - run: npm test</code></pre>
+    </p>
+  </details>
+  <details>
+    <summary>❓ Qu'est-ce que le linting ?</summary>
+    <p>Un outil qui vérifie automatiquement la qualité du code (syntaxe, conventions, erreurs potentielles).</p>
+  </details>
+  <details>
+    <summary>❓ Pourquoi faire des tests automatisés ?</summary>
+    <p>Pour s'assurer que le code fonctionne comme prévu et éviter les régressions.</p>
+  </details>
+  <details>
+    <summary>❓ C'est quoi le déploiement ?</summary>
+    <p>C’est le processus qui rend une application accessible à ses utilisateurs (via un serveur, Docker, cloud, etc.).
+    </p>
+  </details>
+  <details>
+    <summary>❓ Quels outils pour déployer ?</summary>
+    <p>Docker, Ansible, PM2, SSH, GitLab/GitHub CI, Terraform.</p>
+  </details>
+
+
+  <details>
+    <summary>❓ Que faut-il automatiser dans un projet DevOps ?</summary>
+    <p>
+      Il faut automatiser toutes les tâches répétitives, chronophages ou sensibles aux erreurs humaines :
+    <ul>
+      <li>Tests unitaires et linting</li>
+      <li>Builds et packaging</li>
+      <li>Déploiement (CI/CD)</li>
+      <li>Surveillance et alertes</li>
+      <li>Provisioning de serveurs (via Ansible, Terraform...)</li>
+    </ul>
+    </p>
+  </details>
+
+  <details>
+    <summary>❓ Quelles tâches restent manuelles malgré tout ?</summary>
+    <p>
+      Certaines actions nécessitent encore une intervention humaine :
+    <ul>
+      <li>Validation de code sensible (par ex. suppression massive en base de données)</li>
+      <li>Analyse d’un bug complexe ou critique</li>
+      <li>Décisions stratégiques (rollback, migration majeure, changement d’archi)</li>
+      <li>Communication humaine (incident, coordination client, support)</li>
+    </ul>
+    </p>
+  </details>
+
+  <details>
+    <summary>❓ Quels sont les avantages concrets de l’automatisation ?</summary>
+    <p>
+    <ul>
+      <li>Moins d’erreurs humaines</li>
+      <li>Plus de rapidité et de réactivité</li>
+      <li>Gain de temps pour les équipes</li>
+      <li>Possibilité de répéter les actions sans surprise</li>
+      <li>Standardisation des pratiques</li>
+    </ul>
+    </p>
+  </details>
+
+  <details>
+    <summary>❓ Peut-on aller trop loin dans l’automatisation ?</summary>
+    <p>
+      Oui. Trop automatiser sans documenter ni comprendre peut créer :
+    <ul>
+      <li>Une dépendance aveugle aux scripts</li>
+      <li>Des pipelines complexes difficiles à maintenir</li>
+      <li>Un manque de contrôle humain dans les décisions critiques</li>
+    </ul>
+    👉 L'automatisation doit être utile, simple, comprise et documentée.
+    </p>
+  </details>
+
+
+  <details>
+    <summary>❓ Quels sont les bénéfices globaux d’une démarche DevOps ?</summary>
+    <p>
+    <ul>
+      <li>Cycle de livraison plus court</li>
+      <li>Code de meilleure qualité</li>
+      <li>Moins de stress en prod</li>
+      <li>Communication fluide entre devs, ops, QA et sécurité</li>
+      <li>Entreprise plus agile et réactive</li>
+    </ul>
+    </p>
+  </details>
+
+  <details>
+    <summary>❓ DevOps remplace-t-il les métiers traditionnels ?</summary>
+    <p>
+      Non. DevOps transforme les rôles : un développeur comprend mieux l'infra, un admin système sait coder, un QA
+      automatise ses tests.
+      👉 Ce n’est pas une suppression de métiers, mais un **rapprochement**.
+    </p>
+  </details>
+
+  <details>
+    <summary>❓ Peut-on appliquer DevOps dans tous les contextes ?</summary>
+    <p>
+      DevOps est adaptable.
+      Même une petite équipe ou un freelance peut :
+    <ul>
+      <li>Créer un pipeline simple</li>
+      <li>Automatiser ses tests</li>
+      <li>Déployer automatiquement son code</li>
+    </ul>
+    C’est une **philosophie d’efficacité**, pas une norme rigide.
+    </p>
+  </details>
+
+  <details>
+    <summary>❓ Quelle est la différence entre monitoring et observabilité ?</summary>
+    <p>
+      - <strong>Monitoring</strong> = surveiller ce que tu sais (CPU, erreurs, logs, uptime…).<br>
+      - <strong>Observabilité</strong> = comprendre ce que tu ne sais pas encore, à partir des signaux de l'app (logs,
+      métriques, traces).
+    </p>
+  </details>
+
+  <details>
+    <summary>❓ Quels outils utiliser pour surveiller un service ?</summary>
+    <p>
+    <ul>
+      <li>Grafana + Prometheus : visualisation et alertes</li>
+      <li>UptimeRobot / StatusCake : ping, monitoring simple</li>
+      <li>Elastic Stack (ELK) : logs, dashboards puissants</li>
+      <li>Datadog, New Relic, Sentry : solutions tout-en-un (payantes)</li>
+    </ul>
+    </p>
+  </details>
+
+  <details>
+    <summary>❓ Que faut-il monitorer en priorité ?</summary>
+    <p>
+    <ul>
+      <li>Disponibilité (Uptime)</li>
+      <li>Erreurs applicatives (5xx)</li>
+      <li>Temps de réponse</li>
+      <li>Consommation mémoire/CPU</li>
+      <li>Utilisation disque et trafic réseau</li>
+    </ul>
+    </p>
+  </details>
+
+  <details>
+    <summary>❓ À quoi servent les logs ?</summary>
+    <p>
+      Les logs permettent de comprendre :
+    <ul>
+      <li>Ce qui s’est passé</li>
+      <li>Quand, où et pourquoi une erreur est survenue</li>
+    </ul>
+    ➤ Ils sont essentiels pour le debug et le suivi post-prod.
+    </p>
+  </details>
+
+  <details>
+    <summary>❓ Quels sont les risques liés aux pipelines CI/CD ?</summary>
+    <p>
+      - Fuite de secrets/API keys<br>
+      - Droits trop élevés sur les runners<br>
+      - Code malveillant dans une merge request<br>
+      - Téléchargement de dépendances compromises
+    </p>
+  </details>
+
+  <details>
+    <summary>❓ Comment sécuriser ses secrets dans un pipeline ?</summary>
+    <p>
+      - Ne jamais stocker les secrets dans le code<br>
+      - Utiliser les secrets GitHub/GitLab (chiffrés)<br>
+      - Limiter l’accès aux variables sensibles<br>
+      - Utiliser des outils comme HashiCorp Vault pour les environnements avancés
+    </p>
+  </details>
+
+  <details>
+    <summary>❓ Comment détecter les vulnérabilités automatiquement ?</summary>
+    <p>
+      - Intégrer des outils de <strong>SAST</strong> (Static Analysis Security Testing)<br>
+      - Outils populaires :
+    <ul>
+      <li>npm audit</li>
+      <li>Trivy (container scanning)</li>
+      <li>Snyk</li>
+      <li>CodeQL (GitHub)</li>
+    </ul>
+    </p>
+  </details>
+
+  <details>
+    <summary>❓ Faut-il donner un accès SSH à un pipeline ?</summary>
+    <p>
+      Seulement si c’est vraiment nécessaire, et dans un environnement contrôlé.<br>
+      ➤ Toujours restreindre au strict minimum : <code>read-only</code> si possible.<br>
+      ➤ Utiliser des clés temporaires ou jetables.
+    </p>
+  </details>
+
+  <details>
+    <summary>❓ Est-ce qu’un freelance peut faire du DevOps ?</summary>
+    <p>
+      Absolument ! Beaucoup de freelances gèrent leur CI/CD eux-mêmes.<br>
+      ➤ Tu n’as pas besoin d’une équipe entière pour appliquer les bons principes.
+    </p>
+  </details>
+
+  <details>
+    <summary>❓ Quels outils privilégier quand on est seul ?</summary>
+    <p>
+    <ul>
+      <li>GitHub Actions ou GitLab CI (gratuits)</li>
+      <li>PM2 ou Docker pour le déploiement</li>
+      <li>Netlify/Vercel pour les front-ends statiques</li>
+      <li>UptimeRobot pour surveiller son site</li>
+    </ul>
+    </p>
+  </details>
+
+  <details>
+    <summary>❓ Comment expliquer DevOps à un client non-tech ?</summary>
+    <p>
+      ➤ "Je mets en place des outils qui sécurisent et accélèrent la livraison de votre produit."<br>
+      ➤ "Je rends votre application stable, rapide à mettre à jour, et facile à maintenir."
+    </p>
+  </details>
+
+  <details>
+    <summary>❓ DevOps coûte-t-il plus cher pour un petit projet ?</summary>
+    <p>
+      Non. Il fait gagner du temps dès le début, évite les erreurs en production, et réduit les coûts de maintenance.
+      ➤ C’est un **investissement malin**, même à petite échelle.
+    </p>
+  </details>
+</body>
+
+</html>
