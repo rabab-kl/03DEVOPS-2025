@@ -1,18 +1,26 @@
-FROM debian:bullseye-slim
+FROM python:3.11-slim
 
-LABEL maintainer="Farid <info@yaba-consulting.com>"
-
+# Install openssh-server and Poetry
 RUN apt update && \
-    apt remove -y nano || true && \
     apt install -y openssh-server && \
-    apt clean && rm -rf /var/lib/apt/lists/*
+    pip install --upgrade pip && \
+    pip install poetry
 
-RUN mkdir /var/run/sshd
+# Configure SSH (user: admin / password: admin)
+RUN useradd -m admin && echo "admin:admin" | chpasswd && \
+    mkdir /var/run/sshd && \
+    sed -i 's/#PermitRootLogin prohibit-password/PermitRootLogin yes/' /etc/ssh/sshd_config && \
+    echo "root:root" | chpasswd
 
-RUN echo 'root:root' | chpasswd
+# Expose Django (8000) and SSH (22)
+EXPOSE 8000 22
 
-RUN sed -i 's/#PermitRootLogin prohibit-password/PermitRootLogin yes/' /etc/ssh/sshd_config
+# Set working directory and install dependencies
+WORKDIR /app
+COPY pyproject.toml poetry.lock* ./
+RUN poetry config virtualenvs.create false && poetry install --no-root
+COPY . .
 
-EXPOSE 22
+# Start sshd + Django
+CMD [ "bash", "-c", "/usr/sbin/sshd && poetry run python manage.py runserver 0.0.0.0:8000" ]
 
-CMD ["/usr/sbin/sshd", "-D"]

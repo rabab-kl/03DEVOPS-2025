@@ -1,0 +1,37 @@
+# Python
+__pycache__/
+*.pyc
+*.pyo
+*.pyd
+*.sqlite3
+*.env
+
+# Node.js
+node_modules/
+dist/
+
+# Vite
+.vite/
+
+# Django
+*.log
+staticfiles/
+media/
+
+# Docker
+*.pid
+*.sock
+.env
+.env.*
+*.tar
+docker-compose.override.yml
+
+# System
+.DS_Store
+*.swp
+
+# Poetry
+poetry.lock
+
+# VS Code
+.vscode/

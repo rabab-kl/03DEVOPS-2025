@@ -1,0 +1,43 @@
+version: '3.8'
+
+services:
+  server:
+    build: ./server
+    container_name: devops2025-server
+    ports:
+      - "8000:8000"   # Django
+      - "2222:22"     # SSH
+    volumes:
+      - ./server:/app
+    command: bash -c "/usr/sbin/sshd && poetry run python manage.py runserver 0.0.0.0:8000"
+
+  client:
+    build: ./client
+    container_name: devops2025-client
+    ports:
+      - "5173:5173"
+    volumes:
+      - ./client:/app
+    command: npm run dev -- --host
+
+  nginx:
+    build: ./nginx
+    container_name: devops2025-nginx
+    ports:
+      - "80:80"
+    depends_on:
+      - client
+      - server
+      - monitoring
+
+  monitoring:
+    image: grafana/grafana
+    container_name: devops2025-monitoring
+    ports:
+      - "3000:3000"
+    volumes:
+      - grafana-data:/var/lib/grafana
+
+volumes:
+  grafana-data:
+
