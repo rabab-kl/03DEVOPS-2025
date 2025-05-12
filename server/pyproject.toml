@@ -1,15 +1,17 @@
-[tool.poetry]
+[project]
 name = "server"
 version = "0.1.0"
 description = ""
-authors = ["rabab <you@example.com>"]
-packages = [{ include = "config" }]
+authors = [
+    {name = "Your Name",email = "you@example.com"}
+]
+readme = "README.md"
+requires-python = ">=3.9"
+dependencies = [
+    "django (==4.2)"
+]
 
-[tool.poetry.dependencies]
-python = "^3.11"
-django = "^5.2"
 
 [build-system]
-requires = ["poetry-core"]
+requires = ["poetry-core>=2.0.0,<3.0.0"]
 build-backend = "poetry.core.masonry.api"
-
